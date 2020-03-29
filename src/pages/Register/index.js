@@ -11,6 +11,16 @@ import logoImg from '../../assets/logo.svg';
 
 export default function Register(){
 
+  const [name, setName] = useState('');
+  const [whatsapp, setWhatsapp] = useState('');
+  const [city, setCity] = useState('');
+  const [uf, setUf] = useState('');
+  const [email, setEmail] = useState('');
+
+  const handleRegister = (event) => {
+    event.preventDefault();
+  }
+
   return(
     <div className="register-container">
       <div className="content">
@@ -26,14 +36,14 @@ export default function Register(){
           </Link>
         </section>
 
-        <form onSubmit={'handleRegister'}>
-          <input type="text" placeholder="Nome da ONG" value={'name'} onChange={'e => setName(e.target.value)'}/>
-          <input type="email" placeholder="E-mail" value={'email'} onChange={'e => setEmail(e.target.value)'}/>
-          <input type="text" placeholder="WhatsApp" value={'whatsapp'} onChange={'e => setWhatsapp(e.target.value)'}/>
+        <form onSubmit={handleRegister}>
+          <input type="text" placeholder="Nome da ONG" value={name} onChange={e => setName(e.target.value)}/>
+          <input type="email" placeholder="E-mail" value={email} onChange={e => setEmail(e.target.value)}/>
+          <input type="text" placeholder="WhatsApp" value={whatsapp} onChange={e => setWhatsapp(e.target.value)}/>
 
           <div className="input-group">
-            <input type="text" placeholder="Cidade"  value={'city'} onChange={'e => setCity(e.target.value)'}/>
-            <input type="text" placeholder="UF" style={{width: 80}}  value={'uf'} onChange={'e => setUf(e.target.value)'}/>
+            <input type="text" placeholder="Cidade"  value={city} onChange={e => setCity(e.target.value)}/>
+            <input type="text" placeholder="UF" style={{width: 80}}  value={uf} onChange={e => setUf(e.target.value)}/>
           </div>
 
           <button className="button" type="submit">Cadastrar</button>
