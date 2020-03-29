@@ -3,7 +3,7 @@ import React, {useState} from 'react'
 import {Link, useHistory} from 'react-router-dom'
 import { FiArrowLeft } from 'react-icons/fi';
 
-// import api from '../../services/api'
+import api from '../../services/api'
 import './styles.css'
 
 import logoImg from '../../assets/logo.svg';
@@ -17,8 +17,21 @@ export default function Register(){
   const [uf, setUf] = useState('');
   const [email, setEmail] = useState('');
 
-  const handleRegister = (event) => {
+  const history = useHistory();
+
+  const handleRegister = async (event) => {
     event.preventDefault();
+
+    const joinData = {
+      name,
+      email,
+      whatsapp,
+      city,
+      uf
+    }
+
+    const {data} = await api.post('ongs', joinData);
+    data.id && history.push('/')
   }
 
   return(
